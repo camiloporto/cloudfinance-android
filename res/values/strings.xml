@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bufunfa</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="home_header_text">Dinheiro até o último dia do mês</string>
+    <string name="home_email_hint">E-mail</string>
+    <string name="home_password_hint">Senha</string>
+    <string name="home_login_button_text">Entrar</string>
+    <string name="home_newuser_link_text">Novo por aqui? Cadastre-se grátis!</string>
+
+</resources>
