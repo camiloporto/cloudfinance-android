@@ -9,5 +9,9 @@
     <string name="home_password_hint">Senha</string>
     <string name="home_login_button_text">Entrar</string>
     <string name="home_newuser_link_text">Novo por aqui? Cadastre-se grátis!</string>
+    <string name="title_activity_signup">Criar Conta</string>
+    <string name="title_activity_login">Login</string>
+    <string name="home_confirm_password_hint">Confirme senha</string>
+    <string name="signup_button_submit_text">Criar Conta Gratuita</string>
 
 </resources>

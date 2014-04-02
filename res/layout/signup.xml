@@ -8,9 +8,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/light_yellow"
-    tools:context=".HomeActivity" >
+    tools:context=".SignupActivity" >
 
-    <TextView android:id="@+id/home_header"
+    <TextView 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/ic_launcher"
@@ -18,36 +18,33 @@
         android:layout_marginBottom="@dimen/header_bottom_margin"
         android:gravity="center_horizontal" />
     
-    <EditText android:id="@+id/home_login"
+    <EditText android:id="@+id/signup_login_input"
         android:inputType="textEmailAddress"
         android:hint="@string/home_email_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/input_vertical_margin"/>
     
-    <EditText android:id="@+id/home_pass"
+    <EditText android:id="@+id/signup_pass_input"
         android:inputType="textPassword"
         android:hint="@string/home_password_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/input_vertical_margin"/>
     
-    <Button android:id="@+id/home_login_button"
-        android:text="@string/home_login_button_text"
+    <EditText android:id="@+id/signup_confirm_pass_input"
+        android:inputType="textPassword"
+        android:hint="@string/home_confirm_password_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/input_vertical_margin"/>
+    
+    <Button android:id="@+id/signup_button"
+        android:text="@string/signup_button_submit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/input_vertical_margin"
         android:background="@color/dark_green"
         android:textColor="@color/light_yellow"/>
-    
-    <TextView android:id="@+id/home_newuser_link"
-        android:text="@string/home_newuser_link_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/input_vertical_margin"
-        android:paddingBottom="@dimen/input_vertical_margin"
-        android:textColor="@color/dark_green"
-        android:gravity="center"
-        android:onClick="showSignup"/>
 
 </LinearLayout>
