@@ -32,9 +32,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.camiloporto.cloudfinance.android.HomeActivity" />
         </activity>
+        <!-- 
         <service android:name="br.com.camiloporto.cloudfinance.android.service.CloudfinanceService">
             
         </service>
+         -->
     </application>
 
 </manifest>

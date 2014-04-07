@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import br.com.camiloporto.cloudfinance.android.service.CloudfinanceResultReceiver;
 import br.com.camiloporto.cloudfinance.android.service.CloudfinanceResultReceiver.Receiver;
-import br.com.camiloporto.cloudfinance.android.service.CloudfinanceService;
+import br.com.camiloporto.cloudfinance.android.task.LoginTask;
 
 public class HomeActivity extends Activity implements Receiver {
 	
@@ -37,12 +36,11 @@ public class HomeActivity extends Activity implements Receiver {
 		public void onClick(View v) {
 			EditText emailInput = (EditText) findViewById(R.id.home_login);
 			EditText passInput = (EditText) findViewById(R.id.home_pass);
-			Intent loginIntent = new Intent(getApplicationContext(), CloudfinanceService.class);
-			loginIntent.putExtra("userName", emailInput.getText().toString());
-			loginIntent.putExtra("pass", passInput.getText().toString());
-			loginIntent.putExtra("receiver", resultReceiver);
-			loginIntent.putExtra("command", "login");
-			startService(loginIntent);
+			LoginTask loginTask = new LoginTask(HomeActivity.this);
+			loginTask.execute(
+					emailInput.getText().toString(), 
+					passInput.getText().toString());
+			
 		}
 	};
 
@@ -85,13 +83,13 @@ public class HomeActivity extends Activity implements Receiver {
 
 	@Override
 	public void onReceiveResult(int resultCode, Bundle resultData) {
-		String json = resultData.getString("json");
-		Integer httpStatusReturned = Integer.parseInt(json);
+		Integer httpStatusReturned = resultData.getInt(LoginTask.LOGIN_HTTP_STATUS_CODE_TAG);
 		Toast toast = Toast.makeText(this, "Falha ao realizar login", Toast.LENGTH_LONG);
 		if(HttpStatus.SC_UNAUTHORIZED == httpStatusReturned) {
 			toast = Toast.makeText(this, "Usuário/Senha não autorizado", Toast.LENGTH_LONG);
 		} else if(HttpStatus.SC_OK== httpStatusReturned) {
 			toast = Toast.makeText(this, "Login Sucesso!", Toast.LENGTH_LONG);
+			//FIXME navigate to account system screen
 		}
 		toast.show();
 	}

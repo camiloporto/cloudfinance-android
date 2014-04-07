@@ -1,17 +1,24 @@
 package br.com.camiloporto.cloudfinance.android;
 
+import br.com.camiloporto.cloudfinance.android.service.CloudfinanceResultReceiver.Receiver;
+import br.com.camiloporto.cloudfinance.android.task.LoginTask;
+import br.com.camiloporto.cloudfinance.android.task.SignupTask;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class SignupActivity extends Activity {
+public class SignupActivity extends Activity implements Receiver {
 	
 	
 	private OnClickListener submitEventHandler = new OnClickListener() {
@@ -21,6 +28,12 @@ public class SignupActivity extends Activity {
 			EditText emailInput = (EditText) findViewById(R.id.signup_login_input);
 			EditText passInput = (EditText) findViewById(R.id.signup_pass_input);
 			EditText confirmPassInput = (EditText) findViewById(R.id.signup_confirm_pass_input);
+			SignupTask signupTask = new SignupTask(SignupActivity.this);
+			signupTask.execute(
+					emailInput.getText().toString(),
+					passInput.getText().toString(),
+					confirmPassInput.getText().toString()
+				);
 		}
 	};
 
@@ -28,6 +41,8 @@ public class SignupActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.signup);
+		Button signup = (Button) findViewById(R.id.signup_button);
+		signup.setOnClickListener(submitEventHandler);
 		// Show the Up button in the action bar.
 		setupActionBar();
 	}
@@ -64,6 +79,15 @@ public class SignupActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onReceiveResult(int resultCode, Bundle resultData) {
+		String json = resultData.getString("json");
+		Log.d("SignupActivity", "json:\n" + json);
+		Toast toast = Toast.makeText(this, "SignupTask concluida", Toast.LENGTH_LONG);
+		toast.show();
+		//FIXME navigate to AccountSystems screen if success
 	}
 
 }
