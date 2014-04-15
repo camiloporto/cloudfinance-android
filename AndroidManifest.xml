@@ -8,8 +8,8 @@
         android:minSdkVersion="10"
         android:targetSdkVersion="19" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -32,11 +32,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.camiloporto.cloudfinance.android.HomeActivity" />
         </activity>
-        <!-- 
+        <!--
         <service android:name="br.com.camiloporto.cloudfinance.android.service.CloudfinanceService">
             
-        </service>
-         -->
+        </service>
+        -->
+        <activity
+            android:name="br.com.camiloporto.cloudfinance.android.AccountSystemActivity"
+            android:label="@string/title_activity_account_system"
+            android:parentActivityName="br.com.camiloporto.cloudfinance.android.HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.camiloporto.cloudfinance.android.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>

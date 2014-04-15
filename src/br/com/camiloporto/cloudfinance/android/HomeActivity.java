@@ -89,7 +89,9 @@ public class HomeActivity extends Activity implements Receiver {
 			toast = Toast.makeText(this, "Usuário/Senha não autorizado", Toast.LENGTH_LONG);
 		} else if(HttpStatus.SC_OK== httpStatusReturned) {
 			toast = Toast.makeText(this, "Login Sucesso!", Toast.LENGTH_LONG);
-			//FIXME navigate to account system screen
+			Intent i = new Intent(this, AccountSystemActivity.class);
+			startActivity(i);
+			//FIXME send account system list to activity to display
 		}
 		toast.show();
 	}

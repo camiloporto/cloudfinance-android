@@ -13,5 +13,6 @@
     <string name="title_activity_login">Login</string>
     <string name="home_confirm_password_hint">Confirme senha</string>
     <string name="signup_button_submit_text">Criar Conta Gratuita</string>
+    <string name="title_activity_account_system">Sistemas de Contas</string>
 
 </resources>
